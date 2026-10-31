@@ -16,7 +16,7 @@
 <p><a href="#en">English version below</a></p>
 
 <h1>Datenschutzerklärung für „Ralf Racing“</h1>
-<p>Stand: 13. Oktober 2026</p>
+<p>Stand: 31. Oktober 2026</p>
 
 <h2>1. Verantwortlicher</h2>
 <p>
@@ -26,29 +26,112 @@
 
 <h2>2. Kurzfassung</h2>
 <p>
-	Ralf Racing braucht kein Konto. Wir betreiben keinen eigenen Server und sammeln selbst keine
-	personenbezogenen Daten. Daten verlassen dein Gerät nur in zwei Fällen: wenn du ein
-	Mehrspielerspiel mit anderen Geräten spielst (Abschnitt 4) und über die Werbung von Google AdMob
-	(Abschnitt 5).
+	Ralf Racing braucht kein Konto. Wir fragen weder Namen noch Alter ab. Spielstand und Einstellungen
+	bleiben auf deinem Gerät. Daten verlassen dein Gerät nur in drei Fällen:
+</p>
+<ul>
+	<li>wenn du ein Mehrspielerspiel mit anderen Geräten spielst (Abschnitt 4),</li>
+	<li>als Diagnosedaten nach einem Mehrspielerrennen, wenn du das nicht abschaltest (Abschnitt 5),</li>
+	<li>über die Werbung von Google AdMob (Abschnitt 6).</li>
+</ul>
+<p>
+	Für Online-Rennen und Diagnosedaten nutzen wir Dienste von Cloudflare (Abschnitt 7).
 </p>
 
 <h2>3. Daten auf deinem Gerät</h2>
 <p>
 	Spielstand, Einstellungen, Rekorde und Geld speichert das Spiel nur lokal auf deinem Gerät. Wir haben
-	darauf keinen Zugriff. Wenn du die App deinstallierst, werden diese Daten gelöscht.
+	darauf keinen Zugriff. Dazu kommt höchstens eine Diagnose-Zusammenfassung, die noch nicht gesendet
+	werden konnte (Abschnitt 5). Wenn du die App deinstallierst, werden diese Daten gelöscht.
 </p>
 
 <h2>4. Mehrspielermodus</h2>
+<p><strong>4.1 Im selben WLAN (LAN)</strong></p>
 <p>
-	Im Mehrspielermodus verbinden sich die Geräte der Mitspieler direkt miteinander, zum Beispiel
-	über ein gemeinsames WLAN oder einen Hotspot. Dabei werden dein gewählter Spielername, Spieldaten
-	(zum Beispiel Position und Eingaben deines Fahrzeugs) und deine IP-Adresse an die Geräte der
-	Mitspieler in derselben Runde übertragen. Das ist technisch nötig, damit das Spiel funktioniert. Wir
-	selbst erhalten und speichern diese Daten nicht. Wähle keinen Spielernamen, der dich persönlich
-	identifiziert.
+	Die Geräte verbinden sich direkt miteinander, zum Beispiel über ein gemeinsames WLAN oder einen
+	Hotspot. Dafür ist kein Internet nötig. Dabei werden dein gewählter Spielername, Spieldaten (zum
+	Beispiel Position und Eingaben deines Fahrzeugs) und deine IP-Adresse an die Geräte der Mitspieler
+	übertragen. Diese Verbindung ist nicht verschlüsselt. Sie bleibt aber im lokalen Netz. Wir selbst
+	erhalten diese Daten nicht.
 </p>
 
-<h2>5. Werbung (Google AdMob)</h2>
+<p><strong>4.2 Online über das Internet</strong></p>
+<p>
+	<em>Lobby finden.</em> Ein kleines Programm bei Cloudflare (ein „Worker“) vermittelt die Lobbys. Es
+	vergibt für jede Lobby einen zufälligen 6-stelligen Code. Öffentliche Lobbys stehen in einer Liste.
+	Die Liste zeigt den Lobbynamen (das ist der Spielername des Gastgebers), die Strecke, den Modus und die
+	Spielerzahl. Alle, die online eine Lobby suchen, sehen diese Liste. Eine private Lobby erreicht man
+	nur mit dem Code.
+</p>
+<p>
+	Außerdem reicht der Worker die Verbindungsdaten zwischen den Geräten weiter. Darin steht deine
+	IP-Adresse. Cloudflare verarbeitet die IP-Adresse dabei technisch. Der Worker speichert keine
+	IP-Adressen. Die Lobbydaten gibt es nur, solange die Lobby offen ist.
+</p>
+<p>
+	<em>Rennen.</em> Das Rennen läuft direkt zwischen den Geräten (Peer-to-Peer, WebRTC). Übertragen
+	werden dein Spielername, Spieldaten (zum Beispiel Position und Eingaben deines Fahrzeugs) und, wenn
+	du eine eigene Strecke fährst, diese Strecke. Die Verbindung ist verschlüsselt.
+</p>
+<p>
+	<strong>Wichtig:</strong> Beim Verbindungsaufbau tauschen die Geräte ihre IP-Adressen aus. Der
+	Gastgeber einer Lobby erhält die IP-Adressen aller Mitspieler. Jeder Mitspieler erhält die
+	IP-Adresse des Gastgebers. Aus einer IP-Adresse lässt sich ungefähr ablesen, in welcher Region und
+	bei welchem Internetanbieter jemand ist.
+</p>
+<p>
+	Klappt die direkte Verbindung nicht, läuft der Verkehr über einen Weiterleitungsserver von Cloudflare
+	(TURN). Cloudflare leitet die Spieldaten dann nur verschlüsselt weiter und kann ihren Inhalt nicht
+	lesen. Cloudflare sieht dabei aber die IP-Adressen. Der Austausch der IP-Adressen beim
+	Verbindungsaufbau findet auch in diesem Fall statt.
+</p>
+
+<p><strong>4.3 Für LAN und Online gilt</strong></p>
+<p>
+	Dein Spielername ist für die Mitspieler sichtbar. Wähle keinen Spielernamen, der dich persönlich
+	identifiziert. In der PC-Version kann der Mehrspielermodus auch über Steam laufen. Dafür gilt
+	zusätzlich die Datenschutzerklärung von Valve.
+</p>
+<p>
+	Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO: Wir brauchen diese Daten, um dir den
+	Mehrspielermodus bereitzustellen, den du nutzt. Soweit kein Nutzungsvertrag besteht, stützen wir uns
+	auf unser berechtigtes Interesse, dir die gewählte Funktion bereitzustellen (Art. 6 Abs. 1 lit. f
+	DSGVO).
+</p>
+
+<h2>5. Diagnosedaten (Netzwerk)</h2>
+<p>
+	Nach jedem Mehrspielerrennen sendet dein Gerät <strong>eine</strong> Zusammenfassung an unseren
+	Worker bei Cloudflare. Wir nutzen sie nur, um die Netzwerkverbindung im Spiel zu verbessern. Die
+	Zusammenfassung enthält:
+</p>
+<ul>
+	<li>Spielversion und Plattform (Android, iOS, Windows …),</li>
+	<li>Verbindungsart (online, LAN oder – nur PC – Steam) und deine Rolle (Gastgeber oder Mitspieler),</li>
+	<li>den Lobby-Code (nicht bei LAN), die Zahl der Spieler und Autos,</li>
+	<li>Strecke und Modus (eigene Strecken nur als „custom“, ohne Namen) und die Renndauer,</li>
+	<li>Messwerte: Ping, Bildrate, Rechenzeit, Korrekturen, Ruckler, Verbindungslücken und Trennungen.</li>
+</ul>
+<p>
+	<strong>Nicht enthalten</strong> sind dein Spielername, eine Geräte-ID, die Werbe-ID und dein
+	Standort. Wir speichern auch deine IP-Adresse nicht. Cloudflare verarbeitet sie nur bei der
+	Übertragung. Die Uhrzeit runden wir auf die volle Stunde.
+</p>
+<p>
+	Die Daten liegen in einer Datenbank von Cloudflare (Cloudflare D1) in der Region Osteuropa. Nach
+	12 Monaten werden sie automatisch gelöscht. Ist dein Gerät offline, bleibt die Zusammenfassung auf
+	deinem Gerät, bis sie gesendet werden kann. Es bleibt immer nur die letzte gespeichert.
+</p>
+<p>
+	<strong>Abschalten:</strong> Die Diagnosedaten sind eingeschaltet. Du kannst sie jederzeit in den
+	Einstellungen unter „Send Diagnostics“ abschalten. Dann sendet das Spiel nichts mehr.
+</p>
+<p>
+	Rechtsgrundlage ist unser berechtigtes Interesse an einer stabilen Mehrspielerverbindung (Art. 6
+	Abs. 1 lit. f DSGVO). Mit dem Schalter kannst du jederzeit widersprechen (Art. 21 DSGVO).
+</p>
+
+<h2>6. Werbung (Google AdMob)</h2>
 <p>
 	Die App zeigt Werbung mit Google AdMob (Google Ireland Limited, Gordon House, Barrow Street,
 	Dublin 4, Irland). Zwei Arten: Videowerbung, die du freiwillig anschaust, um eine Belohnung zu
@@ -75,32 +158,77 @@
 	<a href="https://support.google.com/admob/answer/6128543">So verwendet Google AdMob Daten</a>.
 </p>
 
-<h2>6. Berechtigungen der App</h2>
+<h2>7. Cloudflare und Übermittlung in die USA</h2>
 <p>
-	Die App nutzt <em>Internet</em> und <em>Netzwerkstatus</em> (für Mehrspielermodus und Werbung)
-	sowie <em>Vibration</em> (für Rückmeldung beim Fahren). Die Werbebibliothek von Google fordert
-		zusätzlich technische Berechtigungen an: <em>Lesen des einfachen Telefonstatus</em>,
-		<em>Gerät wach halten</em> und <em>Dienst im Vordergrund</em>. Sie dienen dazu, Werbung
-		zuverlässig zu laden und anzuzeigen. Die App fragt nicht nach Standort, Kontakten, Kamera oder
-		Mikrofon.
+	Für Online-Lobbys, die Weiterleitung (TURN) und die Diagnosedaten nutzen wir Cloudflare, Inc.
+	(101 Townsend St., San Francisco, CA 94107, USA). Cloudflare verarbeitet die Daten in unserem
+	Auftrag (Auftragsverarbeitung nach Art. 28 DSGVO). Die Datenbank für Diagnosedaten liegt in Europa.
+	Lobby-Vermittlung und Weiterleitung laufen im jeweils nächsten Rechenzentrum von Cloudflare, das auch
+	außerhalb der EU liegen kann.
+</p>
+<p>
+	Cloudflare ist ein US-Unternehmen. Ein Zugriff aus den USA ist deshalb möglich. Cloudflare ist nach
+	dem EU-US Data Privacy Framework zertifiziert (Art. 45 DSGVO). Zusätzlich gelten die
+	Standardvertragsklauseln der EU-Kommission (Art. 46 DSGVO). Mehr dazu:
+	<a href="https://www.cloudflare.com/privacypolicy/">cloudflare.com/privacypolicy</a>.
+</p>
+<p>
+	Alle Verbindungen zu Cloudflare sind verschlüsselt (HTTPS/WSS).
 </p>
 
-<h2>7. Kinder</h2>
+<h2>8. Berechtigungen der App</h2>
 <p>
-	Wir erheben keine personenbezogenen Daten von Kindern und fragen weder Namen noch Alter ab. Es
-	gibt in der App keine Chats, keine Konten und keine Einkäufe.
+	Die App nutzt <em>Internet</em> und <em>Netzwerkstatus</em> (für Mehrspielermodus, Diagnosedaten
+	und Werbung) sowie <em>Vibration</em> (für Rückmeldung beim Fahren). Die Werbebibliothek von Google
+	fordert zusätzlich technische Berechtigungen an: <em>Lesen des einfachen Telefonstatus</em>,
+	<em>Gerät wach halten</em> und <em>Dienst im Vordergrund</em>. Sie dienen dazu, Werbung zuverlässig
+	zu laden und anzuzeigen. Die App fragt nicht nach Standort, Kontakten, Kamera oder Mikrofon.
 </p>
 
-<h2>8. Deine Rechte</h2>
+<h2>9. Kinder</h2>
+<p>
+	Die App ist auch für Kinder gedacht. Wir fragen weder Namen noch Alter ab. Es gibt in der App keine
+	Chats, keine Konten und keine Einkäufe. Im Mehrspielermodus solltest du aber diese Punkte kennen:
+</p>
+<ul>
+	<li>
+		<strong>Spielername:</strong> Mitspieler sehen ihn. Bei einer öffentlichen Lobby sieht jeder
+		den Namen des Gastgebers, der online eine Lobby sucht. Nimm deshalb keinen echten Namen, sondern
+		einen Fantasienamen.
+	</li>
+	<li>
+		<strong>IP-Adresse:</strong> Bei Online-Rennen erhalten andere Spieler technisch deine
+		IP-Adresse (Abschnitt 4.2). Am sichersten spielst du online mit Leuten, die du kennst, in einer
+		privaten Lobby mit Code.
+	</li>
+	<li>
+		<strong>Diagnosedaten:</strong> Sie enthalten keinen Namen und keine Geräte-ID. Eltern können sie
+		in den Einstellungen unter „Send Diagnostics“ abschalten.
+	</li>
+</ul>
+<p>
+	Eltern: Bitte sprecht mit eurem Kind über diese Punkte, bevor es online spielt.
+</p>
+
+<h2>10. Speicherdauer</h2>
+<ul>
+	<li>Daten auf deinem Gerät: bis du die App deinstallierst.</li>
+	<li>Lobbydaten beim Worker: nur solange die Lobby offen ist.</li>
+	<li>Diagnosedaten: 12 Monate, danach automatische Löschung.</li>
+</ul>
+
+<h2>11. Deine Rechte</h2>
 <p>
 	Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung,
-	Datenübertragbarkeit und Widerspruch. Da wir selbst keine Daten über dich speichern, können wir
-	dir in der Regel nur mitteilen, dass keine vorliegen. Für Daten, die Google verarbeitet, wende dich
-	an Google. Du kannst dich außerdem bei einer Datenschutz-Aufsichtsbehörde beschweren, zum
-	Beispiel bei der Behörde deines Bundeslandes.
+	Datenübertragbarkeit und Widerspruch. Den Diagnosedaten kannst du jederzeit mit dem Schalter in den
+	Einstellungen widersprechen. Die gespeicherten Diagnosedaten enthalten keinen Namen und keine ID.
+	Wir können sie dir deshalb in der Regel nicht zuordnen (Art. 11 DSGVO). Nennst du uns den
+	Lobby-Code und den ungefähren Zeitpunkt des Rennens, versuchen wir es. Für Daten, die Google
+	verarbeitet, wende dich an Google. Du kannst dich außerdem bei einer Datenschutz-Aufsichtsbehörde
+	beschweren, zum Beispiel bei der Behörde deines Bundeslandes.
 </p>
 
-<h2>9. Änderungen</h2>
+<h2>12. Änderungen</h2>
 <p>
 	Wir passen diese Erklärung an, wenn sich die App ändert (zum Beispiel durch neue Funktionen). Die
 	aktuelle Fassung steht immer unter dieser Adresse.
@@ -109,7 +237,7 @@
 <hr>
 
 <h1 id="en">Privacy Policy for “Ralf Racing”</h1>
-<p>Last updated: 13 October 2026</p>
+<p>Last updated: 31 October 2026</p>
 
 <h2>1. Controller</h2>
 <p>
@@ -119,27 +247,106 @@
 
 <h2>2. Summary</h2>
 <p>
-	Ralf Racing needs no account. We run no server of our own and do not collect personal data
-	ourselves. Data leaves your device in two cases only: when you play a multiplayer session with
-	other devices (section 4) and through ads from Google AdMob (section 5).
+	Ralf Racing needs no account. We ask for neither name nor age. Progress and settings stay on your
+	device. Data leaves your device in three cases only:
+</p>
+<ul>
+	<li>when you play a multiplayer session with other devices (section 4),</li>
+	<li>as diagnostic data after a multiplayer race, unless you turn this off (section 5),</li>
+	<li>through ads from Google AdMob (section 6).</li>
+</ul>
+<p>
+	For online races and diagnostic data we use services from Cloudflare (section 7).
 </p>
 
 <h2>3. Data on your device</h2>
 <p>
 	Progress, settings, records and in-game money are stored only on your device. We have no access to
-	them. Uninstalling the app deletes them.
+	them. In addition, there is at most one diagnostic summary that could not be sent yet (section 5).
+	Uninstalling the app deletes this data.
 </p>
 
 <h2>4. Multiplayer</h2>
+<p><strong>4.1 On the same Wi-Fi (LAN)</strong></p>
 <p>
-	In multiplayer, the devices of the players connect directly to each other, for example over a shared
-	Wi-Fi network or a hotspot. Your chosen player name, game data (such as the position and inputs of
-	your vehicle) and your IP address are sent to the other players’ devices in the same session. This is
-	needed for the game to work. We do not receive or store this data. Do not choose a player name that
-	identifies you.
+	The devices connect directly to each other, for example over a shared Wi-Fi network or a hotspot. No
+	internet is needed. Your chosen player name, game data (such as the position and inputs of your
+	vehicle) and your IP address are sent to the other players’ devices. This connection is not
+	encrypted, but it stays inside the local network. We do not receive this data.
 </p>
 
-<h2>5. Advertising (Google AdMob)</h2>
+<p><strong>4.2 Online over the internet</strong></p>
+<p>
+	<em>Finding a lobby.</em> A small program at Cloudflare (a “Worker”) arranges the lobbies. It gives
+	each lobby a random 6-digit code. Public lobbies appear in a list. The list shows the lobby name
+	(this is the host’s player name), the track, the mode and the number of players. Everyone who looks
+	for a lobby online can see this list. A private lobby can only be joined with its code.
+</p>
+<p>
+	The Worker also passes the connection data between the devices. This data contains your IP address.
+	Cloudflare processes the IP address for this technical purpose. The Worker does not store IP
+	addresses. Lobby data exists only while the lobby is open.
+</p>
+<p>
+	<em>Racing.</em> The race runs directly between the devices (peer-to-peer, WebRTC). Your player
+	name, game data (such as the position and inputs of your vehicle) and, if you race on your own
+	track, that track are sent. The connection is encrypted.
+</p>
+<p>
+	<strong>Important:</strong> When the connection is set up, the devices exchange their IP
+	addresses. The host of a lobby receives the IP addresses of all players. Each player receives the
+	IP address of the host. An IP address roughly shows a person’s region and internet provider.
+</p>
+<p>
+	If a direct connection fails, the traffic goes through a Cloudflare relay server (TURN). Cloudflare
+	then forwards the game data only in encrypted form and cannot read its content. Cloudflare does see
+	the IP addresses. The exchange of IP addresses during connection setup still takes place in this
+	case.
+</p>
+
+<p><strong>4.3 For LAN and online</strong></p>
+<p>
+	Your player name is visible to the other players. Do not choose a player name that identifies you.
+	In the PC version, multiplayer can also run over Steam. Valve’s privacy policy also applies to that.
+</p>
+<p>
+	Our legal basis is Art. 6(1)(b) GDPR: we need this data to provide the multiplayer mode you use.
+	Where no user agreement exists, we rely on our legitimate interest in providing the feature you chose
+	(Art. 6(1)(f) GDPR).
+</p>
+
+<h2>5. Diagnostic data (network)</h2>
+<p>
+	After each multiplayer race, your device sends <strong>one</strong> summary to our Worker at
+	Cloudflare. We use it only to improve the game’s network connection. The summary contains:
+</p>
+<ul>
+	<li>game version and platform (Android, iOS, Windows …),</li>
+	<li>connection type (online, LAN or – PC only – Steam) and your role (host or player),</li>
+	<li>the lobby code (not for LAN), the number of players and cars,</li>
+	<li>track and mode (own tracks only as “custom”, without a name) and the race duration,</li>
+	<li>measurements: ping, frame rate, processing time, corrections, stutters, connection gaps and disconnects.</li>
+</ul>
+<p>
+	It does <strong>not</strong> contain your player name, a device ID, the advertising ID or your
+	location. We do not store your IP address either. Cloudflare processes it only during the
+	transfer. We round the time to the full hour.
+</p>
+<p>
+	The data is kept in a Cloudflare database (Cloudflare D1) in the Eastern Europe region. It is deleted
+	automatically after 12 months. If your device is offline, the summary stays on your device until it
+	can be sent. Only the latest one is kept.
+</p>
+<p>
+	<strong>Turning it off:</strong> Diagnostic data is on by default. You can turn it off at any time
+	in the settings under “Send Diagnostics”. The game then sends nothing.
+</p>
+<p>
+	Our legal basis is our legitimate interest in a stable multiplayer connection (Art. 6(1)(f) GDPR).
+	You can object at any time with the switch (Art. 21 GDPR).
+</p>
+
+<h2>6. Advertising (Google AdMob)</h2>
 <p>
 	The app shows ads with Google AdMob (Google Ireland Limited, Gordon House, Barrow Street,
 	Dublin 4, Ireland): rewarded video ads you choose to watch, and interstitial ads between races.
@@ -163,30 +370,73 @@
 	<a href="https://support.google.com/admob/answer/6128543">How Google AdMob uses data</a>.
 </p>
 
-<h2>6. App permissions</h2>
+<h2>7. Cloudflare and transfer to the USA</h2>
 <p>
-	The app uses <em>Internet</em> and <em>network state</em> (for multiplayer and ads) and
-	<em>vibration</em> (for driving feedback). Google’s ads library additionally requests technical
-		permissions: <em>read basic phone state</em>, <em>keep device awake</em> and
-		<em>foreground service</em>. They help load and show ads reliably. The app does not ask for
-		location, contacts, camera or microphone.
+	For online lobbies, the relay (TURN) and diagnostic data we use Cloudflare, Inc. (101 Townsend St.,
+	San Francisco, CA 94107, USA). Cloudflare processes the data on our behalf (processor under
+	Art. 28 GDPR). The database for diagnostic data is located in Europe. Lobby matching and the relay run
+	in the nearest Cloudflare data centre, which may be outside the EU.
+</p>
+<p>
+	Cloudflare is a US company, so access from the USA is possible. Cloudflare is certified under the
+	EU-US Data Privacy Framework (Art. 45 GDPR). In addition, the European Commission’s Standard
+	Contractual Clauses apply (Art. 46 GDPR). More information:
+	<a href="https://www.cloudflare.com/privacypolicy/">cloudflare.com/privacypolicy</a>.
+</p>
+<p>
+	All connections to Cloudflare are encrypted (HTTPS/WSS).
 </p>
 
-<h2>7. Children</h2>
+<h2>8. App permissions</h2>
 <p>
-	We collect no personal data from children and ask for neither name nor age. The app has no chat, no
-	accounts and no purchases.
+	The app uses <em>Internet</em> and <em>network state</em> (for multiplayer, diagnostic data and
+	ads) and <em>vibration</em> (for driving feedback). Google’s ads library additionally requests
+	technical permissions: <em>read basic phone state</em>, <em>keep device awake</em> and
+	<em>foreground service</em>. They help load and show ads reliably. The app does not ask for
+	location, contacts, camera or microphone.
 </p>
 
-<h2>8. Your rights</h2>
+<h2>9. Children</h2>
+<p>
+	The app is also meant for children. We ask for neither name nor age. The app has no chat, no
+	accounts and no purchases. In multiplayer, however, you should know these points:
+</p>
+<ul>
+	<li>
+		<strong>Player name:</strong> other players see it. In a public lobby, everyone who looks for a
+		lobby online sees the host’s name. So do not use your real name; pick a made-up one.
+	</li>
+	<li>
+		<strong>IP address:</strong> in online races, other players technically receive your IP address
+		(section 4.2). The safest way to play online is with people you know, in a private lobby with a
+		code.
+	</li>
+	<li>
+		<strong>Diagnostic data:</strong> it contains no name and no device ID. Parents can turn it off in
+		the settings under “Send Diagnostics”.
+	</li>
+</ul>
+<p>
+	Parents: please talk with your child about these points before they play online.
+</p>
+
+<h2>10. Storage period</h2>
+<ul>
+	<li>Data on your device: until you uninstall the app.</li>
+	<li>Lobby data at the Worker: only while the lobby is open.</li>
+	<li>Diagnostic data: 12 months, then deleted automatically.</li>
+</ul>
+
+<h2>11. Your rights</h2>
 <p>
 	You have the right to access, rectification, erasure, restriction of processing, data portability and
-	objection. Because we store no data about you ourselves, we can usually only confirm that we hold
-	none. For data processed by Google, contact Google. You may also lodge a complaint with a data
-	protection supervisory authority.
+	objection. You can object to diagnostic data at any time with the switch in the settings. The stored
+	diagnostic data contains no name and no ID, so we usually cannot link it to you (Art. 11 GDPR). If
+	you tell us the lobby code and the approximate time of the race, we will try. For data processed by
+	Google, contact Google. You may also lodge a complaint with a data protection supervisory authority.
 </p>
 
-<h2>9. Changes</h2>
+<h2>12. Changes</h2>
 <p>
 	We update this policy when the app changes (for example, with new features). The current version
 	is always available at this address.
