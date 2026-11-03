@@ -22,6 +22,8 @@
 	<select id="lang">
 		<option value="de">Deutsch</option>
 		<option value="en">English</option>
+		<option value="es">Español</option>
+		<option value="fr">Français</option>
 	</select>
 </nav>
 
@@ -469,13 +471,488 @@
 	objection. You can object to diagnostic data at any time with the switch in the settings. The stored
 	diagnostic data contains no name and no ID, so we usually cannot link it to you (Art. 11 GDPR). If
 	you tell us the lobby code and the approximate time of the race, we will try. For data processed by
-	Google, contact Google. You may also lodge a complaint with a data protection supervisory authority.
+	Google, contact Google. You may also lodge a complaint with a data protection supervisory authority,
+	for example the authority in your country or region.
 </p>
 
 <h2>12. Changes</h2>
 <p>
 	We update this policy when the app changes (for example, with new features). The current version
 	is always available at this address.
+</p>
+</section>
+
+<hr class="lang-sep">
+
+<section lang="es" id="es">
+<h1>Política de privacidad de «Ralf Racing»</h1>
+<p>Última actualización: 3 de noviembre de 2026</p>
+
+<h2>1. Responsable</h2>
+<p>
+	Michael Klamm<br>
+	Correo electrónico: support.ralfracing@gmail.com
+</p>
+
+<h2>2. Resumen</h2>
+<p>
+	Ralf Racing no necesita ninguna cuenta. No te preguntamos ni el nombre ni la edad. La partida y los
+	ajustes se quedan en tu dispositivo. Los datos solo salen de tu dispositivo en tres casos:
+</p>
+<ul>
+	<li>cuando juegas una partida multijugador con otros dispositivos (sección 4),</li>
+	<li>como datos de diagnóstico después de una carrera multijugador y una vez al día al iniciar el juego, si no lo desactivas (sección 5),</li>
+	<li>a través de la publicidad de Google AdMob (sección 6).</li>
+</ul>
+<p>
+	Para las carreras en línea y los datos de diagnóstico utilizamos servicios de Cloudflare (sección 7).
+</p>
+<p>
+	<em>Aviso de actualización.</em> Al iniciarse, la app de Android pregunta una vez a nuestro worker en
+	Cloudflare si hay una versión nueva. Para ello no se envía ningún dato tuyo. Cloudflare solo ve tu
+	dirección IP por motivos técnicos; no se guarda nada.
+</p>
+
+<h2>3. Datos en tu dispositivo</h2>
+<p>
+	El juego guarda la partida, los ajustes, los récords y el dinero solo de forma local en tu dispositivo.
+	No tenemos acceso a ellos. Además, como mucho hay un resumen de diagnóstico que todavía no se ha
+	podido enviar (sección 5). Si desinstalas la app, estos datos se borran.
+</p>
+
+<h2>4. Modo multijugador</h2>
+<p><strong>4.1 En la misma red wifi (LAN)</strong></p>
+<p>
+	Los dispositivos se conectan directamente entre sí, por ejemplo a través de una red wifi común o de un
+	punto de acceso (hotspot). Para ello no se necesita internet. En este caso se transmiten a los
+	dispositivos de los demás jugadores el nombre de jugador que hayas elegido, datos del juego (por
+	ejemplo, la posición y los controles de tu vehículo) y tu dirección IP. Esta conexión no está cifrada.
+	Pero se queda dentro de la red local. Nosotros no recibimos estos datos.
+</p>
+
+<p><strong>4.2 En línea a través de internet</strong></p>
+<p>
+	<em>Encontrar una sala.</em> Un pequeño programa en Cloudflare (un «worker») gestiona las salas
+	(lobbies). Asigna a cada sala un código aleatorio de 6 caracteres. Las salas públicas aparecen en una
+	lista. La lista muestra el nombre de la sala (es el nombre de jugador del anfitrión), el circuito, el
+	modo y el número de jugadores. Todas las personas que buscan una sala en línea ven esta lista. A una
+	sala privada solo se puede entrar con el código.
+</p>
+<p>
+	Además, el worker transmite los datos de conexión entre los dispositivos. En ellos figura tu dirección
+	IP. Cloudflare trata la dirección IP en este proceso por motivos técnicos. El worker no guarda
+	direcciones IP. Los datos de la sala solo existen mientras la sala está abierta.
+</p>
+<p>
+	<em>Carrera.</em> La carrera se desarrolla directamente entre los dispositivos (peer-to-peer, WebRTC).
+	Se transmiten tu nombre de jugador, datos del juego (por ejemplo, la posición y los controles de tu
+	vehículo) y, si corres en un circuito propio, ese circuito. La conexión está cifrada.
+</p>
+<p>
+	<strong>Importante:</strong> Al establecer la conexión, los dispositivos intercambian sus direcciones
+	IP. El anfitrión de una sala recibe las direcciones IP de todos los demás jugadores. Cada jugador
+	recibe la dirección IP del anfitrión. A partir de una dirección IP se puede saber aproximadamente en
+	qué región está una persona y qué proveedor de internet usa.
+</p>
+<p>
+	Si la conexión directa no funciona, el tráfico pasa por un servidor de retransmisión de Cloudflare
+	(TURN). En ese caso, Cloudflare solo reenvía los datos del juego cifrados y no puede leer su contenido.
+	Sin embargo, Cloudflare sí ve las direcciones IP. El intercambio de direcciones IP al establecer la
+	conexión también se produce en este caso.
+</p>
+
+<p><strong>4.3 Para LAN y en línea</strong></p>
+<p>
+	Tu nombre de jugador es visible para los demás jugadores. No elijas un nombre de jugador que te
+	identifique personalmente. En la versión para PC, el modo multijugador también puede funcionar a
+	través de Steam. En ese caso se aplica además la política de privacidad de Valve.
+</p>
+<p>
+	La base jurídica es el art. 6, apartado 1, letra b), del RGPD: necesitamos estos datos para ofrecerte
+	el modo multijugador que utilizas. En la medida en que no exista un contrato de uso, nos basamos en
+	nuestro interés legítimo en ofrecerte la función que has elegido (art. 6, apartado 1, letra f), del
+	RGPD).
+</p>
+
+<h2>5. Datos de diagnóstico (red)</h2>
+<p>
+	Después de cada carrera multijugador, tu dispositivo envía <strong>un</strong> resumen a nuestro worker
+	en Cloudflare. Solo lo usamos para mejorar la conexión de red del juego. El resumen contiene:
+</p>
+<ul>
+	<li>la versión del juego y la plataforma (Android, iOS, Windows …),</li>
+	<li>el tipo de conexión (en línea, LAN o –solo en PC– Steam) y tu papel (anfitrión o jugador),</li>
+	<li>el código de la sala (no en LAN), el número de jugadores y de coches,</li>
+	<li>el circuito y el modo (los circuitos propios solo como «custom», sin nombre) y la duración de la carrera,</li>
+	<li>valores medidos: ping, tasa de fotogramas, tiempo de cálculo, correcciones, tirones, cortes de conexión y desconexiones.</li>
+</ul>
+<p>
+	<strong>No contiene</strong> tu nombre de jugador, ningún ID de dispositivo, el ID de publicidad ni tu
+	ubicación. Tampoco guardamos tu dirección IP. Cloudflare solo la trata durante la transmisión.
+	Redondeamos la hora a la hora en punto.
+</p>
+<p>
+	<strong>Contador diario:</strong> Además, la primera vez que inicias el juego en un día, tu dispositivo
+	envía un mensaje breve con la versión del juego y la plataforma. Junto a él solo guardamos la fecha.
+	Así contamos cuántos dispositivos usan el juego cada día. El mensaje no contiene ningún ID de
+	dispositivo; no es posible atribuir dos días distintos al mismo dispositivo.
+</p>
+<p>
+	Los datos se encuentran en una base de datos de Cloudflare (Cloudflare D1) en la región de Europa del
+	Este. Se borran automáticamente a los 12 meses. Si tu dispositivo está sin conexión, el resumen se
+	queda en tu dispositivo hasta que se pueda enviar. Siempre se guarda solo el último.
+</p>
+<p>
+	<strong>Desactivar:</strong> Los datos de diagnóstico están activados. Puedes desactivarlos en
+	cualquier momento en los ajustes, en «Send Diagnostics». A partir de entonces, el juego no envía nada.
+</p>
+<p>
+	La base jurídica es nuestro interés legítimo en una conexión multijugador estable (art. 6, apartado 1,
+	letra f), del RGPD). Con el interruptor puedes oponerte en cualquier momento (art. 21 del RGPD).
+</p>
+
+<h2>6. Publicidad (Google AdMob)</h2>
+<p>
+	La app muestra publicidad con Google AdMob (Google Ireland Limited, Gordon House, Barrow Street,
+	Dublín 4, Irlanda). Hay dos tipos: anuncios en vídeo que ves de forma voluntaria para obtener una
+	recompensa, y anuncios intersticiales entre las carreras.
+</p>
+<p>
+	La app está pensada para todas las edades a partir de 9 años, también para niños menores de 13 años.
+	Por eso, la publicidad está configurada como <strong>dirigida a niños</strong>: solo se muestra
+	publicidad no personalizada adecuada para niños (clasificación por edad «G»). La app no lee el ID de
+	publicidad de tu dispositivo.
+</p>
+<p>
+	Al cargar y mostrar publicidad, el SDK de anuncios de Google transmite datos a Google por motivos
+	técnicos, en particular: tu dirección IP (a partir de la cual se puede deducir una ubicación
+	aproximada), información sobre el dispositivo y el software, datos sobre cómo interactúas con la
+	publicidad, así como datos de fallos y de diagnóstico. Google los trata para mostrar la publicidad,
+	medir su efecto y evitar fraudes. La base jurídica es nuestro interés legítimo en financiar el juego
+	gratuito (art. 6, apartado 1, letra f), del RGPD). De Google solo recibimos informes agregados, no
+	datos de personas concretas.
+</p>
+<p>
+	Más información:
+	<a href="https://policies.google.com/privacy">policies.google.com/privacy</a> y
+	<a href="https://support.google.com/admob/answer/6128543">Cómo utiliza Google AdMob los datos</a>.
+</p>
+
+<h2>7. Cloudflare y transferencia a EE. UU.</h2>
+<p>
+	Para las salas en línea, la retransmisión (TURN) y los datos de diagnóstico utilizamos Cloudflare, Inc.
+	(101 Townsend St., San Francisco, CA 94107, EE. UU.). Cloudflare trata los datos por encargo nuestro
+	(encargado del tratamiento según el art. 28 del RGPD). La base de datos de los datos de diagnóstico está
+	en Europa. La gestión de las salas y la retransmisión funcionan en el centro de datos de Cloudflare más
+	cercano en cada caso, que también puede estar fuera de la UE.
+</p>
+<p>
+	Cloudflare es una empresa estadounidense. Por eso es posible un acceso desde EE. UU. Cloudflare está
+	certificada según el Marco de Privacidad de Datos UE-EE. UU. (EU-US Data Privacy Framework, art. 45 del
+	RGPD). Además, se aplican las cláusulas contractuales tipo de la Comisión Europea (art. 46 del RGPD).
+	Más información:
+	<a href="https://www.cloudflare.com/privacypolicy/">cloudflare.com/privacypolicy</a>.
+</p>
+<p>
+	Todas las conexiones con Cloudflare están cifradas (HTTPS/WSS).
+</p>
+
+<h2>8. Permisos de la app</h2>
+<p>
+	La app utiliza <em>Internet</em> y <em>estado de la red</em> (para el modo multijugador, los datos de
+	diagnóstico y la publicidad), así como <em>vibración</em> (para dar respuesta al conducir). La
+	biblioteca de publicidad de Google solicita además permisos técnicos: <em>leer el estado básico del
+	teléfono</em>, <em>mantener el dispositivo activo</em> y <em>servicio en primer plano</em>. Sirven para
+	cargar y mostrar la publicidad de forma fiable. La app no pide la ubicación, los contactos, la cámara
+	ni el micrófono.
+</p>
+
+<h2>9. Niños</h2>
+<p>
+	La app también está pensada para niños. No preguntamos ni el nombre ni la edad. En la app no hay chats,
+	ni cuentas, ni compras. Sin embargo, en el modo multijugador deberías conocer estos puntos:
+</p>
+<ul>
+	<li>
+		<strong>Nombre de jugador:</strong> Los demás jugadores lo ven. En una sala pública, cualquiera que
+		busque una sala en línea ve el nombre del anfitrión. Por eso, no uses tu nombre real, sino un nombre
+		inventado.
+	</li>
+	<li>
+		<strong>Dirección IP:</strong> En las carreras en línea, otros jugadores reciben tu dirección IP por
+		motivos técnicos (sección 4.2). Lo más seguro es jugar en línea con personas que conoces, en una sala
+		privada con código.
+	</li>
+	<li>
+		<strong>Datos de diagnóstico:</strong> No contienen ningún nombre ni ningún ID de dispositivo. Los
+		padres pueden desactivarlos en los ajustes, en «Send Diagnostics».
+	</li>
+</ul>
+<p>
+	Padres: por favor, hablad con vuestro hijo o hija sobre estos puntos antes de que juegue en línea.
+</p>
+
+<h2>10. Plazo de conservación</h2>
+<ul>
+	<li>Datos en tu dispositivo: hasta que desinstales la app.</li>
+	<li>Datos de la sala en el worker: solo mientras la sala está abierta.</li>
+	<li>Datos de diagnóstico: 12 meses; después se borran automáticamente.</li>
+</ul>
+
+<h2>11. Tus derechos</h2>
+<p>
+	Tienes derecho de acceso, rectificación, supresión, limitación del tratamiento, portabilidad de los
+	datos y oposición. Puedes oponerte a los datos de diagnóstico en cualquier momento con el interruptor
+	de los ajustes. Los datos de diagnóstico guardados no contienen ningún nombre ni ningún ID. Por eso,
+	por lo general, no podemos atribuírtelos (art. 11 del RGPD). Si nos indicas el código de la sala y el
+	momento aproximado de la carrera, lo intentaremos. Para los datos que trata Google, dirígete a Google.
+	Además, puedes presentar una reclamación ante una autoridad de protección de datos, por ejemplo, ante
+	la autoridad de tu país o de tu región.
+</p>
+
+<h2>12. Cambios</h2>
+<p>
+	Adaptamos esta política cuando la app cambia (por ejemplo, con funciones nuevas). La versión actual
+	está siempre disponible en esta dirección.
+</p>
+</section>
+
+<hr class="lang-sep">
+
+<section lang="fr" id="fr">
+<h1>Politique de confidentialité de « Ralf Racing »</h1>
+<p>Dernière mise à jour : 3 novembre 2026</p>
+
+<h2>1. Responsable du traitement</h2>
+<p>
+	Michael Klamm<br>
+	E-mail : support.ralfracing@gmail.com
+</p>
+
+<h2>2. Résumé</h2>
+<p>
+	Ralf Racing ne nécessite aucun compte. Nous ne demandons ni ton nom ni ton âge. Ta progression et tes
+	paramètres restent sur ton appareil. Les données ne quittent ton appareil que dans trois cas :
+</p>
+<ul>
+	<li>lorsque tu joues une partie multijoueur avec d’autres appareils (section 4),</li>
+	<li>sous forme de données de diagnostic après une course multijoueur et une fois par jour au lancement, si tu ne les désactives pas (section 5),</li>
+	<li>par la publicité de Google AdMob (section 6).</li>
+</ul>
+<p>
+	Pour les courses en ligne et les données de diagnostic, nous utilisons des services de Cloudflare
+	(section 7).
+</p>
+<p>
+	<em>Avis de mise à jour.</em> Au lancement, l’application Android demande une fois à notre worker chez
+	Cloudflare si une nouvelle version est disponible. Aucune donnée te concernant n’est envoyée à cette
+	occasion. Cloudflare voit seulement ton adresse IP pour des raisons techniques ; rien n’est enregistré.
+</p>
+
+<h2>3. Données sur ton appareil</h2>
+<p>
+	Le jeu enregistre ta progression, tes paramètres, tes records et ton argent uniquement en local sur ton
+	appareil. Nous n’y avons pas accès. S’y ajoute tout au plus un résumé de diagnostic qui n’a pas encore
+	pu être envoyé (section 5). Si tu désinstalles l’application, ces données sont supprimées.
+</p>
+
+<h2>4. Mode multijoueur</h2>
+<p><strong>4.1 Sur le même Wi-Fi (LAN)</strong></p>
+<p>
+	Les appareils se connectent directement entre eux, par exemple via un réseau Wi-Fi commun ou un point
+	d’accès (hotspot). Aucune connexion Internet n’est nécessaire pour cela. Ton nom de joueur choisi, des
+	données de jeu (par exemple la position et les commandes de ton véhicule) et ton adresse IP sont alors
+	transmis aux appareils des autres joueurs. Cette connexion n’est pas chiffrée. Elle reste toutefois
+	dans le réseau local. Nous-mêmes ne recevons pas ces données.
+</p>
+
+<p><strong>4.2 En ligne via Internet</strong></p>
+<p>
+	<em>Trouver un salon.</em> Un petit programme chez Cloudflare (un « worker ») met en relation les
+	salons (lobbies). Il attribue à chaque salon un code aléatoire de 6 caractères. Les salons publics
+	figurent dans une liste. La liste affiche le nom du salon (c’est le nom de joueur de l’hôte), le
+	circuit, le mode et le nombre de joueurs. Toutes les personnes qui cherchent un salon en ligne voient
+	cette liste. On ne peut rejoindre un salon privé qu’avec le code.
+</p>
+<p>
+	En outre, le worker transmet les données de connexion entre les appareils. Elles contiennent ton
+	adresse IP. Cloudflare traite alors l’adresse IP pour des raisons techniques. Le worker n’enregistre
+	aucune adresse IP. Les données du salon n’existent que tant que le salon est ouvert.
+</p>
+<p>
+	<em>Course.</em> La course se déroule directement entre les appareils (pair à pair, WebRTC). Sont
+	transmis ton nom de joueur, des données de jeu (par exemple la position et les commandes de ton
+	véhicule) et, si tu cours sur ton propre circuit, ce circuit. La connexion est chiffrée.
+</p>
+<p>
+	<strong>Important :</strong> Lors de l’établissement de la connexion, les appareils échangent leurs
+	adresses IP. L’hôte d’un salon reçoit les adresses IP de tous les autres joueurs. Chaque joueur reçoit
+	l’adresse IP de l’hôte. Une adresse IP permet de savoir approximativement dans quelle région se trouve
+	une personne et quel est son fournisseur d’accès à Internet.
+</p>
+<p>
+	Si la connexion directe ne fonctionne pas, le trafic passe par un serveur relais de Cloudflare (TURN).
+	Cloudflare ne fait alors que transmettre les données de jeu sous forme chiffrée et ne peut pas en lire
+	le contenu. Cloudflare voit cependant les adresses IP. L’échange des adresses IP lors de
+	l’établissement de la connexion a aussi lieu dans ce cas.
+</p>
+
+<p><strong>4.3 Pour le LAN et le jeu en ligne</strong></p>
+<p>
+	Ton nom de joueur est visible par les autres joueurs. Ne choisis pas un nom de joueur qui permet de
+	t’identifier personnellement. Dans la version PC, le mode multijoueur peut aussi passer par Steam. Dans
+	ce cas, la politique de confidentialité de Valve s’applique en plus.
+</p>
+<p>
+	La base juridique est l’art. 6, paragraphe 1, point b), du RGPD : nous avons besoin de ces données pour
+	te fournir le mode multijoueur que tu utilises. Dans la mesure où il n’existe pas de contrat
+	d’utilisation, nous nous fondons sur notre intérêt légitime à te fournir la fonction que tu as choisie
+	(art. 6, paragraphe 1, point f), du RGPD).
+</p>
+
+<h2>5. Données de diagnostic (réseau)</h2>
+<p>
+	Après chaque course multijoueur, ton appareil envoie <strong>un</strong> résumé à notre worker chez
+	Cloudflare. Nous l’utilisons uniquement pour améliorer la connexion réseau du jeu. Le résumé contient :
+</p>
+<ul>
+	<li>la version du jeu et la plateforme (Android, iOS, Windows …),</li>
+	<li>le type de connexion (en ligne, LAN ou – sur PC uniquement – Steam) et ton rôle (hôte ou joueur),</li>
+	<li>le code du salon (pas en LAN), le nombre de joueurs et de voitures,</li>
+	<li>le circuit et le mode (les circuits personnels uniquement sous la forme « custom », sans nom) et la durée de la course,</li>
+	<li>des mesures : ping, fréquence d’images, temps de calcul, corrections, saccades, coupures de connexion et déconnexions.</li>
+</ul>
+<p>
+	<strong>Ne figurent pas</strong> dans ce résumé ton nom de joueur, un identifiant d’appareil,
+	l’identifiant publicitaire et ta localisation. Nous n’enregistrons pas non plus ton adresse IP.
+	Cloudflare ne la traite que lors de la transmission. Nous arrondissons l’heure à l’heure pleine.
+</p>
+<p>
+	<strong>Compteur journalier :</strong> En outre, au premier lancement de la journée, ton appareil envoie
+	un court message avec la version du jeu et la plateforme. Avec ce message, nous n’enregistrons que la
+	date. Nous comptons ainsi combien d’appareils utilisent le jeu par jour. Le message ne contient aucun
+	identifiant d’appareil ; deux jours ne peuvent pas être attribués au même appareil.
+</p>
+<p>
+	Les données se trouvent dans une base de données de Cloudflare (Cloudflare D1), dans la région Europe
+	de l’Est. Elles sont supprimées automatiquement au bout de 12 mois. Si ton appareil est hors ligne, le
+	résumé reste sur ton appareil jusqu’à ce qu’il puisse être envoyé. Seul le dernier est conservé.
+</p>
+<p>
+	<strong>Désactiver :</strong> Les données de diagnostic sont activées. Tu peux les désactiver à tout
+	moment dans les paramètres, sous « Send Diagnostics ». Le jeu n’envoie alors plus rien.
+</p>
+<p>
+	La base juridique est notre intérêt légitime à disposer d’une connexion multijoueur stable (art. 6,
+	paragraphe 1, point f), du RGPD). Avec l’interrupteur, tu peux t’y opposer à tout moment (art. 21 du
+	RGPD).
+</p>
+
+<h2>6. Publicité (Google AdMob)</h2>
+<p>
+	L’application affiche de la publicité avec Google AdMob (Google Ireland Limited, Gordon House, Barrow
+	Street, Dublin 4, Irlande). Il en existe deux types : des publicités vidéo que tu regardes
+	volontairement pour obtenir une récompense, et des publicités interstitielles entre les courses.
+</p>
+<p>
+	L’application est destinée à toutes les tranches d’âge à partir de 9 ans, y compris aux enfants de
+	moins de 13 ans. C’est pourquoi la publicité est configurée comme <strong>destinée aux enfants</strong> :
+	seule de la publicité non personnalisée et adaptée aux enfants est affichée (classification par âge
+	« G »). L’application ne lit pas l’identifiant publicitaire de ton appareil.
+</p>
+<p>
+	Lors du chargement et de l’affichage de publicités, le SDK publicitaire de Google transmet, pour des
+	raisons techniques, des données à Google, notamment : ton adresse IP (qui permet de déduire une
+	localisation approximative), des informations sur l’appareil et le logiciel, des informations sur la
+	façon dont tu interagis avec la publicité, ainsi que des données de plantage et de diagnostic. Google
+	les traite pour diffuser la publicité, mesurer son efficacité et empêcher la fraude. La base juridique
+	est notre intérêt légitime à financer le jeu gratuit (art. 6, paragraphe 1, point f), du RGPD). Nous ne
+	recevons de Google que des rapports agrégés, et aucune donnée sur des personnes individuelles.
+</p>
+<p>
+	Plus d’informations :
+	<a href="https://policies.google.com/privacy">policies.google.com/privacy</a> et
+	<a href="https://support.google.com/admob/answer/6128543">Comment Google AdMob utilise les données</a>.
+</p>
+
+<h2>7. Cloudflare et transfert vers les États-Unis</h2>
+<p>
+	Pour les salons en ligne, le relais (TURN) et les données de diagnostic, nous utilisons Cloudflare, Inc.
+	(101 Townsend St., San Francisco, CA 94107, États-Unis). Cloudflare traite les données pour notre compte
+	(sous-traitant au sens de l’art. 28 du RGPD). La base de données des données de diagnostic se trouve en
+	Europe. La mise en relation des salons et le relais fonctionnent dans le centre de données de Cloudflare
+	le plus proche, qui peut aussi se trouver en dehors de l’UE.
+</p>
+<p>
+	Cloudflare est une entreprise américaine. Un accès depuis les États-Unis est donc possible. Cloudflare
+	est certifiée selon le cadre de protection des données UE-États-Unis (EU-US Data Privacy Framework,
+	art. 45 du RGPD). En outre, les clauses contractuelles types de la Commission européenne s’appliquent
+	(art. 46 du RGPD). Plus d’informations :
+	<a href="https://www.cloudflare.com/privacypolicy/">cloudflare.com/privacypolicy</a>.
+</p>
+<p>
+	Toutes les connexions avec Cloudflare sont chiffrées (HTTPS/WSS).
+</p>
+
+<h2>8. Autorisations de l’application</h2>
+<p>
+	L’application utilise <em>Internet</em> et <em>l’état du réseau</em> (pour le mode multijoueur, les
+	données de diagnostic et la publicité) ainsi que <em>le vibreur</em> (pour un retour pendant la
+	conduite). La bibliothèque publicitaire de Google demande en plus des autorisations techniques :
+	<em>lire l’état de base du téléphone</em>, <em>empêcher la mise en veille de l’appareil</em> et
+	<em>service de premier plan</em>. Elles servent à charger et à afficher la publicité de manière fiable.
+	L’application ne demande pas l’accès à la localisation, aux contacts, à l’appareil photo ni au micro.
+</p>
+
+<h2>9. Enfants</h2>
+<p>
+	L’application est aussi destinée aux enfants. Nous ne demandons ni le nom ni l’âge. Il n’y a dans
+	l’application ni chat, ni compte, ni achat. En mode multijoueur, tu devrais toutefois connaître ces
+	points :
+</p>
+<ul>
+	<li>
+		<strong>Nom de joueur :</strong> les autres joueurs le voient. Dans un salon public, toute personne
+		qui cherche un salon en ligne voit le nom de l’hôte. N’utilise donc pas ton vrai nom, mais un nom
+		inventé.
+	</li>
+	<li>
+		<strong>Adresse IP :</strong> lors des courses en ligne, les autres joueurs reçoivent ton adresse IP
+		pour des raisons techniques (section 4.2). Le plus sûr est de jouer en ligne avec des personnes que
+		tu connais, dans un salon privé avec code.
+	</li>
+	<li>
+		<strong>Données de diagnostic :</strong> elles ne contiennent ni nom ni identifiant d’appareil. Les
+		parents peuvent les désactiver dans les paramètres, sous « Send Diagnostics ».
+	</li>
+</ul>
+<p>
+	Parents : merci de parler de ces points avec votre enfant avant qu’il ne joue en ligne.
+</p>
+
+<h2>10. Durée de conservation</h2>
+<ul>
+	<li>Données sur ton appareil : jusqu’à ce que tu désinstalles l’application.</li>
+	<li>Données du salon chez le worker : uniquement tant que le salon est ouvert.</li>
+	<li>Données de diagnostic : 12 mois, puis suppression automatique.</li>
+</ul>
+
+<h2>11. Tes droits</h2>
+<p>
+	Tu as le droit d’accès, de rectification, d’effacement, de limitation du traitement, de portabilité des
+	données et d’opposition. Tu peux t’opposer à tout moment aux données de diagnostic avec l’interrupteur
+	dans les paramètres. Les données de diagnostic enregistrées ne contiennent ni nom ni identifiant.
+	C’est pourquoi, en règle générale, nous ne pouvons pas te les attribuer (art. 11 du RGPD). Si tu nous
+	indiques le code du salon et le moment approximatif de la course, nous essaierons. Pour les données
+	traitées par Google, adresse-toi à Google. Tu peux en outre introduire une réclamation auprès d’une
+	autorité de contrôle de la protection des données, par exemple auprès de l’autorité de ton pays ou de
+	ta région.
+</p>
+
+<h2>12. Modifications</h2>
+<p>
+	Nous adaptons cette politique lorsque l’application change (par exemple avec de nouvelles
+	fonctionnalités). La version actuelle est toujours disponible à cette adresse.
 </p>
 </section>
 
