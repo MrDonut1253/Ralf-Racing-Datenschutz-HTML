@@ -8,15 +8,26 @@
 	body { font-family: system-ui, sans-serif; line-height: 1.55; max-width: 44rem; margin: 0 auto; padding: 1.5rem 1rem 4rem; color: #1b1b1f; background: #fff; }
 	h1 { font-size: 1.7rem; } h2 { font-size: 1.2rem; margin-top: 2rem; }
 	a { color: #1a56db; } hr { margin: 3rem 0; border: 0; border-top: 1px solid #ccc; }
+	.lang-bar { display: flex; justify-content: flex-end; gap: .5rem; align-items: center; font-size: .95rem; }
+	.lang-bar select { font: inherit; padding: .3rem .5rem; border-radius: .4rem; }
+	.js .lang-sep { display: none; }
 	@media (prefers-color-scheme: dark) { body { color: #e6e6ea; background: #15151a; } a { color: #8ab4ff; } hr { border-color: #444; } }
 </style>
 </head>
 <body>
 
-<p><a href="#en">English version below</a></p>
+<!-- Weitere Sprache: <option> ergaenzen und einen <section lang="xx" id="xx"> anlegen. -->
+<nav class="lang-bar">
+	<label for="lang">Sprache / Language</label>
+	<select id="lang">
+		<option value="de">Deutsch</option>
+		<option value="en">English</option>
+	</select>
+</nav>
 
+<section lang="de" id="de">
 <h1>Datenschutzerklärung für „Ralf Racing“</h1>
-<p>Stand: 31. Oktober 2026</p>
+<p>Stand: 3. November 2026</p>
 
 <h2>1. Verantwortlicher</h2>
 <p>
@@ -31,11 +42,16 @@
 </p>
 <ul>
 	<li>wenn du ein Mehrspielerspiel mit anderen Geräten spielst (Abschnitt 4),</li>
-	<li>als Diagnosedaten nach einem Mehrspielerrennen, wenn du das nicht abschaltest (Abschnitt 5),</li>
+	<li>als Diagnosedaten nach einem Mehrspielerrennen und einmal am Tag beim Start, wenn du das nicht abschaltest (Abschnitt 5),</li>
 	<li>über die Werbung von Google AdMob (Abschnitt 6).</li>
 </ul>
 <p>
 	Für Online-Rennen und Diagnosedaten nutzen wir Dienste von Cloudflare (Abschnitt 7).
+</p>
+<p>
+	<em>Update-Hinweis.</em> Beim Start fragt die Android-App einmal bei unserem Worker bei Cloudflare
+	nach, ob es eine neue Version gibt. Dabei werden keine Daten von dir mitgeschickt. Cloudflare sieht
+	nur technisch deine IP-Adresse; gespeichert wird nichts.
 </p>
 
 <h2>3. Daten auf deinem Gerät</h2>
@@ -116,6 +132,12 @@
 	<strong>Nicht enthalten</strong> sind dein Spielername, eine Geräte-ID, die Werbe-ID und dein
 	Standort. Wir speichern auch deine IP-Adresse nicht. Cloudflare verarbeitet sie nur bei der
 	Übertragung. Die Uhrzeit runden wir auf die volle Stunde.
+</p>
+<p>
+	<strong>Tageszähler:</strong> Beim ersten Start an einem Tag sendet dein Gerät außerdem eine kurze
+	Meldung mit Spielversion und Plattform. Wir speichern dazu nur das Datum. So zählen wir, wie viele
+	Geräte das Spiel pro Tag nutzen. Die Meldung enthält keine Geräte-ID; zwei Tage lassen sich nicht
+	demselben Gerät zuordnen.
 </p>
 <p>
 	Die Daten liegen in einer Datenbank von Cloudflare (Cloudflare D1) in der Region Osteuropa. Nach
@@ -234,10 +256,13 @@
 	aktuelle Fassung steht immer unter dieser Adresse.
 </p>
 
-<hr>
+</section>
 
-<h1 id="en">Privacy Policy for “Ralf Racing”</h1>
-<p>Last updated: 31 October 2026</p>
+<hr class="lang-sep">
+
+<section lang="en" id="en">
+<h1>Privacy Policy for “Ralf Racing”</h1>
+<p>Last updated: 3 November 2026</p>
 
 <h2>1. Controller</h2>
 <p>
@@ -252,11 +277,16 @@
 </p>
 <ul>
 	<li>when you play a multiplayer session with other devices (section 4),</li>
-	<li>as diagnostic data after a multiplayer race, unless you turn this off (section 5),</li>
+	<li>as diagnostic data after a multiplayer race and once a day at start, unless you turn this off (section 5),</li>
 	<li>through ads from Google AdMob (section 6).</li>
 </ul>
 <p>
 	For online races and diagnostic data we use services from Cloudflare (section 7).
+</p>
+<p>
+	<em>Update notice.</em> When it starts, the Android app asks our worker at Cloudflare once whether a
+	new version is available. No data about you is sent. Cloudflare only technically sees your IP
+	address; nothing is stored.
 </p>
 
 <h2>3. Data on your device</h2>
@@ -331,6 +361,12 @@
 	It does <strong>not</strong> contain your player name, a device ID, the advertising ID or your
 	location. We do not store your IP address either. Cloudflare processes it only during the
 	transfer. We round the time to the full hour.
+</p>
+<p>
+	<strong>Daily count:</strong> On the first start of a day, your device also sends a short message
+	with the game version and platform. We store only the date with it. This lets us count how many
+	devices use the game per day. The message contains no device ID; two days cannot be linked to the
+	same device.
 </p>
 <p>
 	The data is kept in a Cloudflare database (Cloudflare D1) in the Eastern Europe region. It is deleted
@@ -441,6 +477,31 @@
 	We update this policy when the app changes (for example, with new features). The current version
 	is always available at this address.
 </p>
+</section>
+
+<script>
+	// Zeigt eine Sprache. Wahl: ?lang=xx, #xx, sonst Browsersprache, sonst Englisch.
+	// Ohne JavaScript stehen alle Sprachen untereinander.
+	(function () {
+		var select = document.getElementById("lang");
+		var langs = Array.prototype.map.call(select.options, function (o) { return o.value; });
+		function show(lang) {
+			document.querySelectorAll("section[lang]").forEach(function (s) { s.hidden = s.lang !== lang; });
+			select.value = lang;
+			document.documentElement.lang = lang;
+		}
+		var start = new URLSearchParams(location.search).get("lang") || location.hash.slice(1);
+		if (langs.indexOf(start) < 0) start = (navigator.language || "").slice(0, 2).toLowerCase();
+		if (langs.indexOf(start) < 0) start = "en";
+		document.documentElement.classList.add("js");
+		show(start);
+		select.addEventListener("change", function () {
+			show(select.value);
+			history.replaceState(null, "", "#" + select.value);
+			window.scrollTo(0, 0);
+		});
+	})();
+</script>
 
 </body>
 </html>
