@@ -55,9 +55,7 @@
 	Für Online-Rennen und Diagnosedaten nutzen wir Dienste von Cloudflare (Abschnitt 7).
 </p>
 <p>
-	<em>Update-Hinweis.</em> Beim Start fragt die Android-App einmal bei unserem Worker bei Cloudflare
-	nach, ob es eine neue Version gibt. Dabei werden keine Daten von dir mitgeschickt. Cloudflare sieht
-	nur technisch deine IP-Adresse; gespeichert wird nichts.
+	<em>Update-Hinweis.</em> Beim Start fragt die Android-App einmal bei unserem Server bei Cloudflare nach, ob es eine neue Version gibt. Dabei werden keine Daten von dir mitgeschickt. Cloudflare sieht dabei nur deine IP-Adresse; gespeichert wird nichts.
 </p>
 
 <h2>3. Daten auf deinem Gerät</h2>
@@ -79,19 +77,17 @@
 
 <p><strong>4.2 Online über das Internet</strong></p>
 <p>
-	<em>Lobby finden.</em> Ein kleines Programm bei Cloudflare (ein „Worker“) vermittelt die Lobbys. Es
-	vergibt für jede Lobby einen zufälligen 6-stelligen Code. Öffentliche Lobbys stehen in einer Liste.
+	<em>Lobby finden.</em> Unser Server bei Cloudflare vermittelt die Lobbys. Er vergibt für jede Lobby einen zufälligen 6-stelligen Code. Öffentliche Lobbys stehen in einer Liste.
 	Die Liste zeigt den Lobbynamen (das ist der Spielername des Gastgebers), die Strecke, den Modus und die
 	Spielerzahl. Alle, die online eine Lobby suchen, sehen diese Liste. Eine private Lobby erreicht man
 	nur mit dem Code.
 </p>
 <p>
-	Außerdem reicht der Worker die Verbindungsdaten zwischen den Geräten weiter. Darin steht deine
-	IP-Adresse. Cloudflare verarbeitet die IP-Adresse dabei technisch. Der Worker speichert keine
-	IP-Adressen. Die Lobbydaten gibt es nur, solange die Lobby offen ist.
+	Außerdem reicht der Server die Verbindungsdaten zwischen den Geräten weiter. Darin steht deine
+	IP-Adresse. Cloudflare verarbeitet sie dabei nur für die Übertragung. Der Server speichert keine IP-Adressen. Die Lobbydaten gibt es nur, solange die Lobby offen ist.
 </p>
 <p>
-	<em>Rennen.</em> Das Rennen läuft direkt zwischen den Geräten (Peer-to-Peer, WebRTC). Übertragen
+	<em>Rennen.</em> Das Rennen läuft direkt zwischen den Geräten. Übertragen
 	werden dein Spielername, Spieldaten (zum Beispiel Position und Eingaben deines Fahrzeugs) und, wenn
 	du eine eigene Strecke fährst, diese Strecke. Die Verbindung ist verschlüsselt.
 </p>
@@ -102,10 +98,8 @@
 	bei welchem Internetanbieter jemand ist.
 </p>
 <p>
-	Klappt die direkte Verbindung nicht, läuft der Verkehr über einen Weiterleitungsserver von Cloudflare
-	(TURN). Cloudflare leitet die Spieldaten dann nur verschlüsselt weiter und kann ihren Inhalt nicht
-	lesen. Cloudflare sieht dabei aber die IP-Adressen. Der Austausch der IP-Adressen beim
-	Verbindungsaufbau findet auch in diesem Fall statt.
+	Klappt die direkte Verbindung nicht, laufen die Daten über einen Server von Cloudflare. Cloudflare leitet die Spieldaten dann nur verschlüsselt weiter und kann ihren Inhalt nicht
+	lesen. Cloudflare sieht dabei aber die IP-Adressen. Die Geräte tauschen ihre IP-Adressen auch in diesem Fall aus.
 </p>
 
 <p><strong>4.3 Für LAN und Online gilt</strong></p>
@@ -115,24 +109,22 @@
 	zusätzlich die Datenschutzerklärung von Valve.
 </p>
 <p>
-	Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO: Wir brauchen diese Daten, um dir den
-	Mehrspielermodus bereitzustellen, den du nutzt. Soweit kein Nutzungsvertrag besteht, stützen wir uns
+	Wir brauchen diese Daten, um dir den Mehrspielermodus bereitzustellen, den du nutzt (Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO). Soweit kein Nutzungsvertrag besteht, stützen wir uns
 	auf unser berechtigtes Interesse, dir die gewählte Funktion bereitzustellen (Art. 6 Abs. 1 lit. f
 	DSGVO).
 </p>
 
 <h2>5. Diagnosedaten (Netzwerk)</h2>
 <p>
-	Nach jedem Mehrspielerrennen sendet dein Gerät <strong>eine</strong> Zusammenfassung an unseren
-	Worker bei Cloudflare. Wir nutzen sie nur, um die Netzwerkverbindung im Spiel zu verbessern. Die
+	Nach jedem Mehrspielerrennen sendet dein Gerät <strong>eine</strong> Zusammenfassung an unseren Server bei Cloudflare. Wir nutzen sie nur, um die Netzwerkverbindung im Spiel zu verbessern. Die
 	Zusammenfassung enthält:
 </p>
 <ul>
 	<li>Spielversion und Plattform (Android, iOS, Windows …),</li>
 	<li>Verbindungsart (online, LAN oder – nur PC – Steam) und deine Rolle (Gastgeber oder Mitspieler),</li>
 	<li>den Lobby-Code (nicht bei LAN), die Zahl der Spieler und Autos,</li>
-	<li>Strecke und Modus (eigene Strecken nur als „custom“, ohne Namen) und die Renndauer,</li>
-	<li>Messwerte: Ping, Bildrate, Rechenzeit, Korrekturen, Ruckler, Verbindungslücken und Trennungen.</li>
+	<li>Strecke und Modus (eigene Strecken ohne Namen) und die Renndauer,</li>
+	<li>Messwerte zu Verbindung und Spielfluss, zum Beispiel Ping, Ruckler und Verbindungsabbrüche.</li>
 </ul>
 <p>
 	<strong>Nicht enthalten</strong> sind dein Spielername, eine Geräte-ID, die Werbe-ID und dein
@@ -146,7 +138,7 @@
 	demselben Gerät zuordnen.
 </p>
 <p>
-	Die Daten liegen in einer Datenbank von Cloudflare (Cloudflare D1) in der Region Osteuropa. Nach
+	Die Daten liegen bei Cloudflare auf Servern in Europa. Nach
 	12 Monaten werden sie automatisch gelöscht. Ist dein Gerät offline, bleibt die Zusammenfassung auf
 	deinem Gerät, bis sie gesendet werden kann. Es bleibt immer nur die letzte gespeichert.
 </p>
@@ -168,11 +160,11 @@
 <p>
 	Die App ist für alle Altersgruppen ab 9 Jahren gedacht, auch für Kinder unter 13 Jahren. Deshalb ist die
 	Werbung als <strong>kinderorientiert</strong> eingestellt: Es wird nur nicht personalisierte
-	Werbung angezeigt, die für Kinder geeignet ist (Altersfreigabe „G“). Die App liest die
+	Werbung angezeigt, die für Kinder geeignet ist. Die App liest die
 	Werbe-ID deines Geräts nicht aus.
 </p>
 <p>
-	Beim Laden und Anzeigen von Werbung überträgt das Google-Werbe-SDK technisch bedingt Daten an
+	Beim Laden und Anzeigen von Werbung überträgt die Werbetechnik von Google technisch bedingt Daten an
 	Google, insbesondere: deine IP-Adresse (daraus lässt sich ein ungefährer Standort ableiten),
 	Geräte- und Softwareinformationen, Angaben dazu, wie du mit der Werbung umgehst, sowie
 	Absturz- und Diagnosedaten. Google verarbeitet sie, um die Werbung auszuliefern, ihre Wirkung zu
@@ -188,11 +180,8 @@
 
 <h2>7. Cloudflare und Übermittlung in die USA</h2>
 <p>
-	Für Online-Lobbys, die Weiterleitung (TURN) und die Diagnosedaten nutzen wir Cloudflare, Inc.
-	(101 Townsend St., San Francisco, CA 94107, USA). Cloudflare verarbeitet die Daten in unserem
-	Auftrag (Auftragsverarbeitung nach Art. 28 DSGVO). Die Datenbank für Diagnosedaten liegt in Europa.
-	Lobby-Vermittlung und Weiterleitung laufen im jeweils nächsten Rechenzentrum von Cloudflare, das auch
-	außerhalb der EU liegen kann.
+	Für Online-Lobbys, die Weiterleitung von Rennen und die Diagnosedaten nutzen wir Cloudflare, Inc.
+	(101 Townsend St., San Francisco, CA 94107, USA). Cloudflare verarbeitet die Daten nur in unserem Auftrag (Art. 28 DSGVO). Die Diagnosedaten liegen in Europa. Lobbys und Weiterleitung laufen über das nächstgelegene Rechenzentrum von Cloudflare. Es kann auch außerhalb der EU liegen.
 </p>
 <p>
 	Cloudflare ist ein US-Unternehmen. Ein Zugriff aus den USA ist deshalb möglich. Cloudflare ist nach
@@ -201,7 +190,7 @@
 	<a href="https://www.cloudflare.com/privacypolicy/">cloudflare.com/privacypolicy</a>.
 </p>
 <p>
-	Alle Verbindungen zu Cloudflare sind verschlüsselt (HTTPS/WSS).
+	Alle Verbindungen zu Cloudflare sind verschlüsselt.
 </p>
 
 <h2>8. Berechtigungen der App</h2>
@@ -241,7 +230,7 @@
 <h2>10. Speicherdauer</h2>
 <ul>
 	<li>Daten auf deinem Gerät: bis du die App deinstallierst.</li>
-	<li>Lobbydaten beim Worker: nur solange die Lobby offen ist.</li>
+	<li>Lobbydaten auf unserem Server: nur solange die Lobby offen ist.</li>
 	<li>Diagnosedaten: 12 Monate, danach automatische Löschung.</li>
 </ul>
 
@@ -290,9 +279,8 @@
 	For online races and diagnostic data we use services from Cloudflare (section 7).
 </p>
 <p>
-	<em>Update notice.</em> When it starts, the Android app asks our worker at Cloudflare once whether a
-	new version is available. No data about you is sent. Cloudflare only technically sees your IP
-	address; nothing is stored.
+	<em>Update notice.</em> When it starts, the Android app asks our server at Cloudflare once whether a
+	new version is available. No data about you is sent. Cloudflare only sees your IP address; nothing is stored.
 </p>
 
 <h2>3. Data on your device</h2>
@@ -313,18 +301,17 @@
 
 <p><strong>4.2 Online over the internet</strong></p>
 <p>
-	<em>Finding a lobby.</em> A small program at Cloudflare (a “Worker”) arranges the lobbies. It gives
+	<em>Finding a lobby.</em> Our server at Cloudflare arranges the lobbies. It gives
 	each lobby a random 6-digit code. Public lobbies appear in a list. The list shows the lobby name
 	(this is the host’s player name), the track, the mode and the number of players. Everyone who looks
 	for a lobby online can see this list. A private lobby can only be joined with its code.
 </p>
 <p>
-	The Worker also passes the connection data between the devices. This data contains your IP address.
-	Cloudflare processes the IP address for this technical purpose. The Worker does not store IP
-	addresses. Lobby data exists only while the lobby is open.
+	The server also passes the connection data between the devices. This data contains your IP address.
+	Cloudflare processes it only for the transfer. The server does not store IP addresses. Lobby data exists only while the lobby is open.
 </p>
 <p>
-	<em>Racing.</em> The race runs directly between the devices (peer-to-peer, WebRTC). Your player
+	<em>Racing.</em> The race runs directly between the devices. Your player
 	name, game data (such as the position and inputs of your vehicle) and, if you race on your own
 	track, that track are sent. The connection is encrypted.
 </p>
@@ -334,10 +321,9 @@
 	IP address of the host. An IP address roughly shows a person’s region and internet provider.
 </p>
 <p>
-	If a direct connection fails, the traffic goes through a Cloudflare relay server (TURN). Cloudflare
+	If a direct connection fails, the data goes through a Cloudflare server. Cloudflare
 	then forwards the game data only in encrypted form and cannot read its content. Cloudflare does see
-	the IP addresses. The exchange of IP addresses during connection setup still takes place in this
-	case.
+	the IP addresses. The devices still exchange their IP addresses in this case.
 </p>
 
 <p><strong>4.3 For LAN and online</strong></p>
@@ -346,22 +332,21 @@
 	In the PC version, multiplayer can also run over Steam. Valve’s privacy policy also applies to that.
 </p>
 <p>
-	Our legal basis is Art. 6(1)(b) GDPR: we need this data to provide the multiplayer mode you use.
+	We need this data to provide the multiplayer mode you use (legal basis: Art. 6(1)(b) GDPR).
 	Where no user agreement exists, we rely on our legitimate interest in providing the feature you chose
 	(Art. 6(1)(f) GDPR).
 </p>
 
 <h2>5. Diagnostic data (network)</h2>
 <p>
-	After each multiplayer race, your device sends <strong>one</strong> summary to our Worker at
-	Cloudflare. We use it only to improve the game’s network connection. The summary contains:
+	After each multiplayer race, your device sends <strong>one</strong> summary to our server at Cloudflare. We use it only to improve the game’s network connection. The summary contains:
 </p>
 <ul>
 	<li>game version and platform (Android, iOS, Windows …),</li>
 	<li>connection type (online, LAN or – PC only – Steam) and your role (host or player),</li>
 	<li>the lobby code (not for LAN), the number of players and cars,</li>
-	<li>track and mode (own tracks only as “custom”, without a name) and the race duration,</li>
-	<li>measurements: ping, frame rate, processing time, corrections, stutters, connection gaps and disconnects.</li>
+	<li>track and mode (own tracks without a name) and the race duration,</li>
+	<li>measurements of the connection and how smoothly the game runs, for example ping, stutters and dropped connections.</li>
 </ul>
 <p>
 	It does <strong>not</strong> contain your player name, a device ID, the advertising ID or your
@@ -375,7 +360,7 @@
 	same device.
 </p>
 <p>
-	The data is kept in a Cloudflare database (Cloudflare D1) in the Eastern Europe region. It is deleted
+	The data is kept at Cloudflare on servers in Europe. It is deleted
 	automatically after 12 months. If your device is offline, the summary stays on your device until it
 	can be sent. Only the latest one is kept.
 </p>
@@ -395,11 +380,10 @@
 </p>
 <p>
 	The app is meant for ages 9 and up, including children under 13. Ads are therefore configured as
-	<strong>child-directed</strong>: only non-personalised, child-appropriate ads are shown (content
-	rating “G”). The app does not read your device’s advertising ID.
+	<strong>child-directed</strong>: only non-personalised, child-appropriate ads are shown. The app does not read your device’s advertising ID.
 </p>
 <p>
-	When ads load and display, the Google ads SDK sends data to Google as part of its technical
+	When ads load and display, Google’s ad technology sends data to Google as part of its technical
 	operation, in particular your IP address (from which an approximate location can be derived), device
 	and software information, how you interact with ads, and crash and diagnostic data. Google
 	processes it to deliver ads, measure their performance and prevent fraud. Our legal basis is our
@@ -414,10 +398,8 @@
 
 <h2>7. Cloudflare and transfer to the USA</h2>
 <p>
-	For online lobbies, the relay (TURN) and diagnostic data we use Cloudflare, Inc. (101 Townsend St.,
-	San Francisco, CA 94107, USA). Cloudflare processes the data on our behalf (processor under
-	Art. 28 GDPR). The database for diagnostic data is located in Europe. Lobby matching and the relay run
-	in the nearest Cloudflare data centre, which may be outside the EU.
+	For online lobbies, relaying races and diagnostic data we use Cloudflare, Inc. (101 Townsend St.,
+	San Francisco, CA 94107, USA). Cloudflare processes the data only on our behalf (Art. 28 GDPR). The diagnostic data is stored in Europe. Lobbies and relaying run through the nearest Cloudflare data centre. It may be outside the EU.
 </p>
 <p>
 	Cloudflare is a US company, so access from the USA is possible. Cloudflare is certified under the
@@ -426,7 +408,7 @@
 	<a href="https://www.cloudflare.com/privacypolicy/">cloudflare.com/privacypolicy</a>.
 </p>
 <p>
-	All connections to Cloudflare are encrypted (HTTPS/WSS).
+	All connections to Cloudflare are encrypted.
 </p>
 
 <h2>8. App permissions</h2>
@@ -465,7 +447,7 @@
 <h2>10. Storage period</h2>
 <ul>
 	<li>Data on your device: until you uninstall the app.</li>
-	<li>Lobby data at the Worker: only while the lobby is open.</li>
+	<li>Lobby data on our server: only while the lobby is open.</li>
 	<li>Diagnostic data: 12 months, then deleted automatically.</li>
 </ul>
 
@@ -512,9 +494,7 @@
 	Para las carreras en línea y los datos de diagnóstico utilizamos servicios de Cloudflare (sección 7).
 </p>
 <p>
-	<em>Aviso de actualización.</em> Al iniciarse, la app de Android pregunta una vez a nuestro worker en
-	Cloudflare si hay una versión nueva. Para ello no se envía ningún dato tuyo. Cloudflare solo ve tu
-	dirección IP por motivos técnicos; no se guarda nada.
+	<em>Aviso de actualización.</em> Al iniciarse, la app de Android pregunta una vez a nuestro servidor en Cloudflare si hay una versión nueva. Para ello no se envía ningún dato tuyo. Cloudflare solo ve tu dirección IP; no se guarda nada.
 </p>
 
 <h2>3. Datos en tu dispositivo</h2>
@@ -536,19 +516,18 @@
 
 <p><strong>4.2 En línea a través de internet</strong></p>
 <p>
-	<em>Encontrar una sala.</em> Un pequeño programa en Cloudflare (un «worker») gestiona las salas
+	<em>Encontrar una sala.</em> Nuestro servidor en Cloudflare gestiona las salas
 	(lobbies). Asigna a cada sala un código aleatorio de 6 caracteres. Las salas públicas aparecen en una
 	lista. La lista muestra el nombre de la sala (es el nombre de jugador del anfitrión), el circuito, el
 	modo y el número de jugadores. Todas las personas que buscan una sala en línea ven esta lista. A una
 	sala privada solo se puede entrar con el código.
 </p>
 <p>
-	Además, el worker transmite los datos de conexión entre los dispositivos. En ellos figura tu dirección
-	IP. Cloudflare trata la dirección IP en este proceso por motivos técnicos. El worker no guarda
-	direcciones IP. Los datos de la sala solo existen mientras la sala está abierta.
+	Además, el servidor transmite los datos de conexión entre los dispositivos. En ellos figura tu dirección
+	IP. Cloudflare solo la trata para la transmisión. El servidor no guarda direcciones IP. Los datos de la sala solo existen mientras la sala está abierta.
 </p>
 <p>
-	<em>Carrera.</em> La carrera se desarrolla directamente entre los dispositivos (peer-to-peer, WebRTC).
+	<em>Carrera.</em> La carrera se desarrolla directamente entre los dispositivos.
 	Se transmiten tu nombre de jugador, datos del juego (por ejemplo, la posición y los controles de tu
 	vehículo) y, si corres en un circuito propio, ese circuito. La conexión está cifrada.
 </p>
@@ -559,10 +538,8 @@
 	qué región está una persona y qué proveedor de internet usa.
 </p>
 <p>
-	Si la conexión directa no funciona, el tráfico pasa por un servidor de retransmisión de Cloudflare
-	(TURN). En ese caso, Cloudflare solo reenvía los datos del juego cifrados y no puede leer su contenido.
-	Sin embargo, Cloudflare sí ve las direcciones IP. El intercambio de direcciones IP al establecer la
-	conexión también se produce en este caso.
+	Si la conexión directa no funciona, los datos pasan por un servidor de Cloudflare. En ese caso, Cloudflare solo reenvía los datos del juego cifrados y no puede leer su contenido.
+	Sin embargo, Cloudflare sí ve las direcciones IP. Los dispositivos intercambian sus direcciones IP también en este caso.
 </p>
 
 <p><strong>4.3 Para LAN y en línea</strong></p>
@@ -572,23 +549,21 @@
 	través de Steam. En ese caso se aplica además la política de privacidad de Valve.
 </p>
 <p>
-	La base jurídica es el art. 6, apartado 1, letra b), del RGPD: necesitamos estos datos para ofrecerte
-	el modo multijugador que utilizas. En la medida en que no exista un contrato de uso, nos basamos en
+	Necesitamos estos datos para ofrecerte el modo multijugador que utilizas (base jurídica: art. 6, apartado 1, letra b), del RGPD). En la medida en que no exista un contrato de uso, nos basamos en
 	nuestro interés legítimo en ofrecerte la función que has elegido (art. 6, apartado 1, letra f), del
 	RGPD).
 </p>
 
 <h2>5. Datos de diagnóstico (red)</h2>
 <p>
-	Después de cada carrera multijugador, tu dispositivo envía <strong>un</strong> resumen a nuestro worker
-	en Cloudflare. Solo lo usamos para mejorar la conexión de red del juego. El resumen contiene:
+	Después de cada carrera multijugador, tu dispositivo envía <strong>un</strong> resumen a nuestro servidor en Cloudflare. Solo lo usamos para mejorar la conexión de red del juego. El resumen contiene:
 </p>
 <ul>
 	<li>la versión del juego y la plataforma (Android, iOS, Windows …),</li>
 	<li>el tipo de conexión (en línea, LAN o –solo en PC– Steam) y tu papel (anfitrión o jugador),</li>
 	<li>el código de la sala (no en LAN), el número de jugadores y de coches,</li>
-	<li>el circuito y el modo (los circuitos propios solo como «custom», sin nombre) y la duración de la carrera,</li>
-	<li>valores medidos: ping, tasa de fotogramas, tiempo de cálculo, correcciones, tirones, cortes de conexión y desconexiones.</li>
+	<li>el circuito y el modo (los circuitos propios, sin nombre) y la duración de la carrera,</li>
+	<li>valores medidos sobre la conexión y la fluidez del juego, por ejemplo, ping, tirones y cortes de conexión.</li>
 </ul>
 <p>
 	<strong>No contiene</strong> tu nombre de jugador, ningún ID de dispositivo, el ID de publicidad ni tu
@@ -602,8 +577,7 @@
 	dispositivo; no es posible atribuir dos días distintos al mismo dispositivo.
 </p>
 <p>
-	Los datos se encuentran en una base de datos de Cloudflare (Cloudflare D1) en la región de Europa del
-	Este. Se borran automáticamente a los 12 meses. Si tu dispositivo está sin conexión, el resumen se
+	Los datos se guardan en Cloudflare, en servidores de Europa. Se borran automáticamente a los 12 meses. Si tu dispositivo está sin conexión, el resumen se
 	queda en tu dispositivo hasta que se pueda enviar. Siempre se guarda solo el último.
 </p>
 <p>
@@ -624,11 +598,11 @@
 <p>
 	La app está pensada para todas las edades a partir de 9 años, también para niños menores de 13 años.
 	Por eso, la publicidad está configurada como <strong>dirigida a niños</strong>: solo se muestra
-	publicidad no personalizada adecuada para niños (clasificación por edad «G»). La app no lee el ID de
+	publicidad no personalizada adecuada para niños. La app no lee el ID de
 	publicidad de tu dispositivo.
 </p>
 <p>
-	Al cargar y mostrar publicidad, el SDK de anuncios de Google transmite datos a Google por motivos
+	Al cargar y mostrar publicidad, la tecnología publicitaria de Google transmite datos a Google por motivos
 	técnicos, en particular: tu dirección IP (a partir de la cual se puede deducir una ubicación
 	aproximada), información sobre el dispositivo y el software, datos sobre cómo interactúas con la
 	publicidad, así como datos de fallos y de diagnóstico. Google los trata para mostrar la publicidad,
@@ -644,11 +618,8 @@
 
 <h2>7. Cloudflare y transferencia a EE. UU.</h2>
 <p>
-	Para las salas en línea, la retransmisión (TURN) y los datos de diagnóstico utilizamos Cloudflare, Inc.
-	(101 Townsend St., San Francisco, CA 94107, EE. UU.). Cloudflare trata los datos por encargo nuestro
-	(encargado del tratamiento según el art. 28 del RGPD). La base de datos de los datos de diagnóstico está
-	en Europa. La gestión de las salas y la retransmisión funcionan en el centro de datos de Cloudflare más
-	cercano en cada caso, que también puede estar fuera de la UE.
+	Para las salas en línea, la retransmisión de carreras y los datos de diagnóstico utilizamos Cloudflare, Inc.
+	(101 Townsend St., San Francisco, CA 94107, EE. UU.). Cloudflare trata los datos solo por encargo nuestro (art. 28 del RGPD). Los datos de diagnóstico se guardan en Europa. Las salas y la retransmisión pasan por el centro de datos de Cloudflare más cercano. Este también puede estar fuera de la UE.
 </p>
 <p>
 	Cloudflare es una empresa estadounidense. Por eso es posible un acceso desde EE. UU. Cloudflare está
@@ -658,7 +629,7 @@
 	<a href="https://www.cloudflare.com/privacypolicy/">cloudflare.com/privacypolicy</a>.
 </p>
 <p>
-	Todas las conexiones con Cloudflare están cifradas (HTTPS/WSS).
+	Todas las conexiones con Cloudflare están cifradas.
 </p>
 
 <h2>8. Permisos de la app</h2>
@@ -699,7 +670,7 @@
 <h2>10. Plazo de conservación</h2>
 <ul>
 	<li>Datos en tu dispositivo: hasta que desinstales la app.</li>
-	<li>Datos de la sala en el worker: solo mientras la sala está abierta.</li>
+	<li>Datos de la sala en nuestro servidor: solo mientras la sala está abierta.</li>
 	<li>Datos de diagnóstico: 12 meses; después se borran automáticamente.</li>
 </ul>
 
@@ -748,9 +719,8 @@
 	(section 7).
 </p>
 <p>
-	<em>Avis de mise à jour.</em> Au lancement, l’application Android demande une fois à notre worker chez
-	Cloudflare si une nouvelle version est disponible. Aucune donnée te concernant n’est envoyée à cette
-	occasion. Cloudflare voit seulement ton adresse IP pour des raisons techniques ; rien n’est enregistré.
+	<em>Avis de mise à jour.</em> Au lancement, l’application Android demande une fois à notre serveur chez Cloudflare si une nouvelle version est disponible. Aucune donnée te concernant n’est envoyée à cette
+	occasion. Cloudflare voit seulement ton adresse IP ; rien n’est enregistré.
 </p>
 
 <h2>3. Données sur ton appareil</h2>
@@ -772,19 +742,17 @@
 
 <p><strong>4.2 En ligne via Internet</strong></p>
 <p>
-	<em>Trouver un salon.</em> Un petit programme chez Cloudflare (un « worker ») met en relation les
-	salons (lobbies). Il attribue à chaque salon un code aléatoire de 6 caractères. Les salons publics
+	<em>Trouver un salon.</em> Notre serveur chez Cloudflare met en relation les salons (lobbies). Il attribue à chaque salon un code aléatoire de 6 caractères. Les salons publics
 	figurent dans une liste. La liste affiche le nom du salon (c’est le nom de joueur de l’hôte), le
 	circuit, le mode et le nombre de joueurs. Toutes les personnes qui cherchent un salon en ligne voient
 	cette liste. On ne peut rejoindre un salon privé qu’avec le code.
 </p>
 <p>
-	En outre, le worker transmet les données de connexion entre les appareils. Elles contiennent ton
-	adresse IP. Cloudflare traite alors l’adresse IP pour des raisons techniques. Le worker n’enregistre
-	aucune adresse IP. Les données du salon n’existent que tant que le salon est ouvert.
+	En outre, le serveur transmet les données de connexion entre les appareils. Elles contiennent ton
+	adresse IP. Cloudflare ne la traite que pour la transmission. Le serveur n’enregistre aucune adresse IP. Les données du salon n’existent que tant que le salon est ouvert.
 </p>
 <p>
-	<em>Course.</em> La course se déroule directement entre les appareils (pair à pair, WebRTC). Sont
+	<em>Course.</em> La course se déroule directement entre les appareils. Sont
 	transmis ton nom de joueur, des données de jeu (par exemple la position et les commandes de ton
 	véhicule) et, si tu cours sur ton propre circuit, ce circuit. La connexion est chiffrée.
 </p>
@@ -795,10 +763,9 @@
 	une personne et quel est son fournisseur d’accès à Internet.
 </p>
 <p>
-	Si la connexion directe ne fonctionne pas, le trafic passe par un serveur relais de Cloudflare (TURN).
+	Si la connexion directe ne fonctionne pas, les données passent par un serveur de Cloudflare.
 	Cloudflare ne fait alors que transmettre les données de jeu sous forme chiffrée et ne peut pas en lire
-	le contenu. Cloudflare voit cependant les adresses IP. L’échange des adresses IP lors de
-	l’établissement de la connexion a aussi lieu dans ce cas.
+	le contenu. Cloudflare voit cependant les adresses IP. Les appareils échangent aussi leurs adresses IP dans ce cas.
 </p>
 
 <p><strong>4.3 Pour le LAN et le jeu en ligne</strong></p>
@@ -808,23 +775,21 @@
 	ce cas, la politique de confidentialité de Valve s’applique en plus.
 </p>
 <p>
-	La base juridique est l’art. 6, paragraphe 1, point b), du RGPD : nous avons besoin de ces données pour
-	te fournir le mode multijoueur que tu utilises. Dans la mesure où il n’existe pas de contrat
+	Nous avons besoin de ces données pour te fournir le mode multijoueur que tu utilises (base juridique : art. 6, paragraphe 1, point b), du RGPD). Dans la mesure où il n’existe pas de contrat
 	d’utilisation, nous nous fondons sur notre intérêt légitime à te fournir la fonction que tu as choisie
 	(art. 6, paragraphe 1, point f), du RGPD).
 </p>
 
 <h2>5. Données de diagnostic (réseau)</h2>
 <p>
-	Après chaque course multijoueur, ton appareil envoie <strong>un</strong> résumé à notre worker chez
-	Cloudflare. Nous l’utilisons uniquement pour améliorer la connexion réseau du jeu. Le résumé contient :
+	Après chaque course multijoueur, ton appareil envoie <strong>un</strong> résumé à notre serveur chez Cloudflare. Nous l’utilisons uniquement pour améliorer la connexion réseau du jeu. Le résumé contient :
 </p>
 <ul>
 	<li>la version du jeu et la plateforme (Android, iOS, Windows …),</li>
 	<li>le type de connexion (en ligne, LAN ou – sur PC uniquement – Steam) et ton rôle (hôte ou joueur),</li>
 	<li>le code du salon (pas en LAN), le nombre de joueurs et de voitures,</li>
-	<li>le circuit et le mode (les circuits personnels uniquement sous la forme « custom », sans nom) et la durée de la course,</li>
-	<li>des mesures : ping, fréquence d’images, temps de calcul, corrections, saccades, coupures de connexion et déconnexions.</li>
+	<li>le circuit et le mode (les circuits personnels sans nom) et la durée de la course,</li>
+	<li>des mesures sur la connexion et la fluidité du jeu, par exemple le ping, les saccades et les coupures de connexion.</li>
 </ul>
 <p>
 	<strong>Ne figurent pas</strong> dans ce résumé ton nom de joueur, un identifiant d’appareil,
@@ -838,8 +803,7 @@
 	identifiant d’appareil ; deux jours ne peuvent pas être attribués au même appareil.
 </p>
 <p>
-	Les données se trouvent dans une base de données de Cloudflare (Cloudflare D1), dans la région Europe
-	de l’Est. Elles sont supprimées automatiquement au bout de 12 mois. Si ton appareil est hors ligne, le
+	Les données sont conservées chez Cloudflare, sur des serveurs en Europe. Elles sont supprimées automatiquement au bout de 12 mois. Si ton appareil est hors ligne, le
 	résumé reste sur ton appareil jusqu’à ce qu’il puisse être envoyé. Seul le dernier est conservé.
 </p>
 <p>
@@ -861,11 +825,10 @@
 <p>
 	L’application est destinée à toutes les tranches d’âge à partir de 9 ans, y compris aux enfants de
 	moins de 13 ans. C’est pourquoi la publicité est configurée comme <strong>destinée aux enfants</strong> :
-	seule de la publicité non personnalisée et adaptée aux enfants est affichée (classification par âge
-	« G »). L’application ne lit pas l’identifiant publicitaire de ton appareil.
+	seule de la publicité non personnalisée et adaptée aux enfants est affichée. L’application ne lit pas l’identifiant publicitaire de ton appareil.
 </p>
 <p>
-	Lors du chargement et de l’affichage de publicités, le SDK publicitaire de Google transmet, pour des
+	Lors du chargement et de l’affichage de publicités, la technologie publicitaire de Google transmet, pour des
 	raisons techniques, des données à Google, notamment : ton adresse IP (qui permet de déduire une
 	localisation approximative), des informations sur l’appareil et le logiciel, des informations sur la
 	façon dont tu interagis avec la publicité, ainsi que des données de plantage et de diagnostic. Google
@@ -881,11 +844,8 @@
 
 <h2>7. Cloudflare et transfert vers les États-Unis</h2>
 <p>
-	Pour les salons en ligne, le relais (TURN) et les données de diagnostic, nous utilisons Cloudflare, Inc.
-	(101 Townsend St., San Francisco, CA 94107, États-Unis). Cloudflare traite les données pour notre compte
-	(sous-traitant au sens de l’art. 28 du RGPD). La base de données des données de diagnostic se trouve en
-	Europe. La mise en relation des salons et le relais fonctionnent dans le centre de données de Cloudflare
-	le plus proche, qui peut aussi se trouver en dehors de l’UE.
+	Pour les salons en ligne, le relais des courses et les données de diagnostic, nous utilisons Cloudflare, Inc.
+	(101 Townsend St., San Francisco, CA 94107, États-Unis). Cloudflare traite les données uniquement pour notre compte (art. 28 du RGPD). Les données de diagnostic sont conservées en Europe. Les salons et le relais passent par le centre de données de Cloudflare le plus proche. Il peut aussi se trouver en dehors de l’UE.
 </p>
 <p>
 	Cloudflare est une entreprise américaine. Un accès depuis les États-Unis est donc possible. Cloudflare
@@ -895,7 +855,7 @@
 	<a href="https://www.cloudflare.com/privacypolicy/">cloudflare.com/privacypolicy</a>.
 </p>
 <p>
-	Toutes les connexions avec Cloudflare sont chiffrées (HTTPS/WSS).
+	Toutes les connexions avec Cloudflare sont chiffrées.
 </p>
 
 <h2>8. Autorisations de l’application</h2>
@@ -937,7 +897,7 @@
 <h2>10. Durée de conservation</h2>
 <ul>
 	<li>Données sur ton appareil : jusqu’à ce que tu désinstalles l’application.</li>
-	<li>Données du salon chez le worker : uniquement tant que le salon est ouvert.</li>
+	<li>Données du salon sur notre serveur : uniquement tant que le salon est ouvert.</li>
 	<li>Données de diagnostic : 12 mois, puis suppression automatique.</li>
 </ul>
 
